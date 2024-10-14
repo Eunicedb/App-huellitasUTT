@@ -1,6 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    android:padding="20dp"
+    tools:context=".Activity.CrudActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Título de la pantalla -->
+
+    <!-- Layout horizontal para el formulario de nombre del producto -->
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="24dp"
+        android:gravity="center_horizontal"
+        android:text="Administrar Productos"
+        android:textColor="#4A4A4A"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+       >
+
+        <ImageView
+            android:id="@+id/iconProductName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="Nombre del Producto" />
+
+        <EditText
+            android:id="@+id/editTextProductName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Nombre del Producto"
+            android:minHeight="48dp"
+            android:padding="12dp" />
+    </LinearLayout>
+
+    <!-- Layout horizontal para el formulario de descripción del producto -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iconProductDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="Descripción del Producto" />
+
+        <EditText
+            android:id="@+id/editTextProductDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:minHeight="48dp"
+            android:padding="12dp"
+            android:hint="Descripción del Producto" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iconProgramName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="Programa Educativo" />
+
+        <EditText
+            android:id="@+id/editTextProgramName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:minHeight="48dp"
+            android:hint="Programa Educativo" />
+    </LinearLayout>
+
+    <!-- Botones de acciones CRUD en una fila horizontal -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="15dp"
+        android:gravity="center_horizontal">
+
+        <!-- Botón Agregar Producto -->
+
+        <!-- Botón Actualizar Producto -->
+        <Button
+            android:id="@+id/buttonAddProduct"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="@drawable/ic_add"
+            android:contentDescription="Agregar Producto" />
+
+        <Button
+            android:id="@+id/buttonUpdateProduct"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="@drawable/ic_update"
+            android:contentDescription="Actualizar Producto" />
+
+        <!-- Botón Eliminar Producto -->
+        <Button
+            android:id="@+id/buttonDeleteProduct"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_delete"
+            android:contentDescription="Eliminar Producto" />
+    </LinearLayout>
+
+    <!-- RecyclerView para mostrar la lista de productos -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewProducts"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingTop="16dp" />
+</LinearLayout>
