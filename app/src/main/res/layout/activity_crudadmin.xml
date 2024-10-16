@@ -4,146 +4,154 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
     tools:context=".Activity.CrudActivity">
 
-    <!-- Título de la pantalla -->
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:text="Administrar Productos"
-        android:textColor="#4A4A4A"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- Layout para el nombre del producto -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <ImageView
-            android:id="@+id/iconProductName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="Nombre del Producto" />
-
-        <EditText
-            android:id="@+id/editTextProductName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="Nombre del Producto"
-            android:minHeight="48dp"
-            android:padding="12dp" />
-    </LinearLayout>
-
-    <!-- Layout para la descripción del producto -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/editTextProductName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <ImageView
-            android:id="@+id/iconProductDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="Descripción del Producto" />
-
-        <EditText
-            android:id="@+id/editTextProductDescription"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:minHeight="48dp"
-            android:padding="12dp"
-            android:hint="Descripción del Producto" />
-    </LinearLayout>
-
-    <!-- Layout para el programa educativo -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/editTextProductDescription"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <ImageView
-            android:id="@+id/iconProgramName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="Programa Educativo" />
-
-        <EditText
-            android:id="@+id/editTextProgramName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:minHeight="48dp"
-            android:padding="12dp"
-            android:hint="Programa Educativo" />
-    </LinearLayout>
-
-    <!-- Botones de acciones CRUD -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="15dp"
-        android:gravity="center_horizontal"
-        app:layout_constraintTop_toBottomOf="@id/editTextProgramName">
-
-        <Button
-            android:id="@+id/buttonAddProduct"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:background="@drawable/ic_add"
-            style="?android:attr/borderlessButtonStyle"
-            android:contentDescription="Agregar Producto" />
-
-        <Button
-            android:id="@+id/buttonUpdateProduct"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:background="@drawable/ic_update"
-            style="?android:attr/borderlessButtonStyle"
-            android:contentDescription="Actualizar Producto" />
-
-        <Button
-            android:id="@+id/buttonDeleteProduct"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_delete"
-            style="?android:attr/borderlessButtonStyle"
-            android:contentDescription="Eliminar Producto" />
-    </LinearLayout>
-
-    <!-- RecyclerView para mostrar la lista de productos -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewProducts"
-        android:layout_width="match_parent"
+    <!-- ScrollView para permitir desplazamiento -->
+    <ScrollView
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/buttonDeleteProduct"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:paddingTop="16dp" />
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <!-- Título de la pantalla -->
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:text="Administrar Productos"
+                android:textColor="#4A4A4A"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <!-- Input para el nombre del producto -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp">
+
+                <ImageView
+                    android:id="@+id/iconProductName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="Nombre del Producto" />
+
+                <EditText
+                    android:id="@+id/editTextProductName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp"
+                    android:minHeight="48dp"
+                    android:padding="12dp"
+                    android:hint="Nombre del Producto" />
+            </LinearLayout>
+
+            <!-- Input para la descripción del producto -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp">
+
+                <ImageView
+                    android:id="@+id/iconProductDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="Descripción del Producto" />
+
+                <EditText
+                    android:id="@+id/editTextProductDescription"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp"
+                    android:minHeight="48dp"
+                    android:padding="12dp"
+                    android:hint="Descripción del Producto" />
+            </LinearLayout>
+
+            <!-- Input para el programa educativo -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp">
+
+                <ImageView
+                    android:id="@+id/iconProgramName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="Programa Educativo" />
+
+                <EditText
+                    android:id="@+id/editTextProgramName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp"
+                    android:minHeight="48dp"
+                    android:padding="12dp"
+                    android:hint="Programa Educativo" />
+            </LinearLayout>
+
+            <!-- Botones de acciones CRUD -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="20dp">
+
+                <Button
+                    android:id="@+id/buttonAddProduct"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="58dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_add"
+                    android:contentDescription="Agregar Producto"
+                    android:padding="10dp" />
+
+                <Button
+                    android:id="@+id/buttonUpdateProduct"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_update"
+                    android:contentDescription="Actualizar Producto"
+                    android:layout_marginStart="10dp"
+                    android:padding="10dp" />
+
+                <Button
+                    android:id="@+id/buttonDeleteProduct"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_delete"
+                    android:contentDescription="Eliminar Producto"
+                    android:layout_marginStart="10dp" />
+            </LinearLayout>
+
+            <!-- RecyclerView para la lista de productos -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewProducts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingTop="16dp" />
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
