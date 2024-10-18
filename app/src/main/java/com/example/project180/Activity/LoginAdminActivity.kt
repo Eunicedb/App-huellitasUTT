@@ -8,30 +8,27 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.project180.R // Asegúrate de que este import apunte a tu archivo de recursos
+import com.example.project180.R
 import com.google.firebase.auth.FirebaseAuth
-
-
 
 class LoginAdminActivity : AppCompatActivity() {
 
     private lateinit var adminUsernameEditText: EditText
     private lateinit var adminPasswordEditText: EditText
     private lateinit var loginButton: Button
-    private lateinit var forgotPasswordButton: Button // Nuevo botón
-    private lateinit var auth: FirebaseAuth // Inicializa FirebaseAuth
+    private lateinit var forgotPasswordButton: Button
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_loginadmin)
 
-        // Inicializa FirebaseAuth
         auth = FirebaseAuth.getInstance()
 
-        adminUsernameEditText = findViewById(R.id.adminCorreoEditText) // Asegúrate de que este ID sea correcto
+        adminUsernameEditText = findViewById(R.id.adminCorreoEditText)
         adminPasswordEditText = findViewById(R.id.adminPasswordEditText)
         loginButton = findViewById(R.id.loginButton)
-        forgotPasswordButton = findViewById(R.id.forgotPasswordButton) // Inicializa el botón de olvido de contraseña
+        forgotPasswordButton = findViewById(R.id.forgotPasswordButton)
 
         loginButton.setOnClickListener {
             validateAndLogin()
@@ -46,9 +43,13 @@ class LoginAdminActivity : AppCompatActivity() {
         val username = adminUsernameEditText.text.toString().trim()
         val password = adminPasswordEditText.text.toString().trim()
 
-        // Validación de campos
         if (TextUtils.isEmpty(username)) {
             Toast.makeText(this, "Por favor ingresa un correo", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(username).matches()) {
+            Toast.makeText(this, "Por favor ingresa un correo válido", Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -62,7 +63,19 @@ class LoginAdminActivity : AppCompatActivity() {
             return
         }
 
-        // Aquí debes agregar la lógica para autenticar al usuario con Firebase
+        // Lógica de inicio de sesión con Firebase
+        auth.signInWithEmailAndPassword(username, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Inicio de sesión exitoso, redirigir a la pantalla del administrador
+                    val intent = Intent(this, CrudActivity::class.java)
+                    startActivity(intent)
+                    finish() // Termina la actividad de inicio de sesión para que no regrese aquí con el botón atrás
+                } else {
+                    // Si el inicio de sesión falla, muestra un mensaje de error
+                    Toast.makeText(this, "Error de autenticación", Toast.LENGTH_SHORT).show()
+                }
+            }
     }
 
     private fun resetPassword() {

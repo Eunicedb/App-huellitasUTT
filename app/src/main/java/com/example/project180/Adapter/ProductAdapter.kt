@@ -16,7 +16,6 @@ class ProductAdapter(
     class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val productName: TextView = itemView.findViewById(R.id.productName)
         val productDescription: TextView = itemView.findViewById(R.id.productDescription)
-        val programName: TextView = itemView.findViewById(R.id.programName)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
@@ -29,7 +28,6 @@ class ProductAdapter(
         val product = productList[position]
         holder.productName.text = product.name
         holder.productDescription.text = product.description
-        holder.programName.text = product.program
     }
 
     override fun getItemCount(): Int {
