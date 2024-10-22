@@ -4,33 +4,38 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="16dp"
+    android:padding="20dp"
     android:background="?attr/selectableItemBackground">
 
     <!-- Nombre del Producto -->
+
+    <!-- Descripción del Producto -->
     <TextView
         android:id="@+id/productName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Nombre del Producto"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:layout_marginTop="116dp"
         android:gravity="center"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="Nombre del Producto"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="18sp"
+
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Descripción del Producto -->
     <TextView
         android:id="@+id/productDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:gravity="center"
         android:text="Descripción del Producto"
         android:textColor="@android:color/darker_gray"
         android:textSize="16sp"
-        android:gravity="center"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/productName" />
 </androidx.constraintlayout.widget.ConstraintLayout>
