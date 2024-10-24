@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Huellitas UTT</string>
-    <string name="intro_title"><font color="#000000">Ayudemos a Cambiar Vidas</font> \n<font color="#008b86">Donaciones para Perros en Necesidad</font> \n<font color="#000000">Un Futuro Mejor, Huella a Huella</font></string>
-    <string name="intro_text">Con tu apoyo, brindamos alimento, refugio y amor a perros sin hogar.\nHaz una diferencia hoy, cada donación cuenta.\nÚnete a nuestra misión y sé parte del cambio.</string>
-    <string name="intro_signin">¿Eres Administrador?<font color="#008b86"> Inicia Sesión</font></string>
-    <string name="comienza_ahora">Comienza ahora</string>
+    <string name="intro_title" translatable="false"><font color="#000000">Ayudemos a Cambiar Vidas</font> \n<font color="#008b86">Donaciones para Perros en Necesidad</font> \n<font color="#000000">Un Futuro Mejor, Huella a Huella</font></string>
+    <string name="intro_text" translatable="false">Con tu apoyo, brindamos alimento, refugio y amor a perros sin hogar.\nHaz una diferencia hoy, cada donación cuenta.\nÚnete a nuestra misión y sé parte del cambio.</string>
+    <string name="intro_signin" translatable="false">¿Eres Administrador?<font color="#008b86"> Inicia Sesión</font></string>
+    <string name="comienza_ahora" translatable="false">Comienza ahora</string>
 </resources>

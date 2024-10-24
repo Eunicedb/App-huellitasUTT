@@ -1,5 +1,6 @@
 package com.example.project180.Adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -27,7 +28,7 @@ class PicListAdapter(val items: MutableList<String>, var picMain: ImageView) :
         return Viewholder(binding)
     }
 
-    override fun onBindViewHolder(holder: PicListAdapter.Viewholder, position: Int) {
+    override fun onBindViewHolder(holder: PicListAdapter.Viewholder, @SuppressLint("RecyclerView") position: Int) {
 
         Glide.with(holder.itemView.context)
             .load(items[position])

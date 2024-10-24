@@ -34,6 +34,9 @@
             android:name=".Activity.LoginAdminActivity"
             android:exported="false"/>
 
+        <activity
+            android:name=".Activity.CrudActivity"
+            android:exported="false"/>
 
         <activity
             android:name=".Activity.IntroActivity"
